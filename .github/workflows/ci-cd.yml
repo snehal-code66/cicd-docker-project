@@ -21,13 +21,18 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-          run: pip install -r requirements.txt
+        run: pip install -r requirements.txt
+
+      - name: Debug project files
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 3 -type f
 
       - name: Run pytest
-            env:
+        env:
           PYTHONPATH: ${{ github.workspace }}
         run: python -m pytest -v
-          
 
       - name: Build Docker image
         run: docker build -t cicd-demo-app .
