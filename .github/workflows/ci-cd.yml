@@ -1,3 +1,4 @@
+
 name: Docker CI Pipeline
 
 on:
@@ -22,9 +23,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-        - name: Run pytest
-  run: |
-    PYTHONPATH=. python -m pytest -v
+      - name: Run pytest
+        run: |
+          PYTHONPATH=. python -m pytest -v
 
       - name: Build Docker image
         run: docker build -t cicd-demo-app .
